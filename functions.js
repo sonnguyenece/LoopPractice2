@@ -109,15 +109,15 @@ function drawRec() {
     for (i = 0; i < length; i++) {
         if (i == 0 || i == (length - 1)) {
             displayRec += "<tr>";
-            for (j = 0; j <= width-1; j++) {
+            for (j = 0; j <= width - 1; j++) {
                 displayRec += "<td>*</td>";
             }
             displayRec += "</tr>";
-        }else for (j = 0; j <= width-1; j++) {
+        } else for (j = 0; j <= width - 1; j++) {
             if (j == 0) {
                 displayRec += "<tr><td>*</td>";
                 continue;
-            } else if (j == width-1) {
+            } else if (j == width - 1) {
                 displayRec += "<td>*</td></tr>";
                 continue;
             } else displayRec += "<td>" + " " + "</td>";
@@ -128,17 +128,40 @@ function drawRec() {
 }
 
 function money() {
-let V=parseFloat(prompt("Nhap vao von :"));
-let L=parseFloat(prompt("Nhap lai suat cua ngan hang:"));
-let T=parseFloat(prompt("So thang gui tiet kiem"));
-let M=V;
-let v=V;
-let t=T;
-for(let i=0;i<T;i++){
-      M=M+V*L;
-      V=V*(1+L);
+    let V = parseFloat(prompt("Nhap vao von :"));
+    let L = parseFloat(prompt("Nhap lai suat cua ngan hang:"));
+    let T = parseFloat(prompt("So thang gui tiet kiem"));
+    let M = V;
+    let v = V;
+    let t = T;
+    for (let i = 0; i < T; i++) {
+        M = M + V * L;
+        V = V * (1 + L);
+    }
+    document.getElementById('resultEx5').innerHTML =
+        "Voi " + v + "$ tien von." + " Gui ngan hang trong " + t + " thang voi lai suat " + L +
+        " ban se nhan lai duoc: " + M.toFixed(2) + "$";
 }
-document.getElementById('resultEx5').innerHTML=
-    "Voi "+v+"$ tien von." +
-    "Gui ngan hang trong "+t+" thang ban se nhan lai duoc: "+M.toFixed(2)+"$";
+
+function heart() {
+    let i, j;
+    let x=0;
+    let y=0;
+    let displayHeart = "<table>";
+    let F = 0;
+    for(y=1.25;y>-1;y-=0.05){
+        displayHeart += "<tr>";
+        for(x=-1.25;x<1.25;x+=0.025){
+            F = ((x ** 2) + (y ** 2) - 1)** 3 - (x ** 2) * (y ** 3);
+            console.log(F);
+            if(F<0.005&&F>-0.005){
+                displayHeart += "<td>*</td>";
+            }
+            else
+                displayHeart += "<td>" + " " + "</td>";
+        }
+        displayHeart += "</tr>"
+    }
+    displayHeart += "</table>";
+    document.getElementById("resultEx6").innerHTML = displayHeart;
 }
