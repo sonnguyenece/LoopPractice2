@@ -154,7 +154,7 @@ function heart() {
         for(x=-1.25;x<1.25;x+=0.025){
             F = ((x ** 2) + (y ** 2) - 1)** 3 - (x ** 2) * (y ** 3);
             console.log(F);
-            if(F<0.005&&F>-0.005){
+            if(F<0.01&&F>-0.01){
                 displayHeart += "<td>*</td>";
             }
             else
